@@ -92,13 +92,10 @@ func main() {
 	max_offset := uint64(0)
 	for out := range chanel_out {
 		if result == nil {
-			println("Init result")
 			result = make([]uint8, out.offset+16)
 		} else if uint64(len(result)) <= out.offset {
-			println("Resize result")
 			result = append(result, make([]uint8, (out.offset - uint64(len(result)) + 16))...)
 		}
-		println("Offset:", out.offset, "; Length:", len(result))
 
 		result[out.offset] = out.value
 		if out.offset > max_offset {
