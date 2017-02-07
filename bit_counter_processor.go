@@ -35,6 +35,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	defer file.Close()
 
 	chanel_in := make(chan InputValue, 8)
 	chanel_out := make(chan OutputValue, 8)
